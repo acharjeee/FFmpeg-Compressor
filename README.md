@@ -5,23 +5,14 @@ this python script simplifies your interaction with ffmpeg. FFmpeg is a free and
 
 !! CHANGE THE FFMPEG FILE PATH BASED ON YOUR MACHINE OR YOU WILL GET AN ERROR !!
 ## Installation
-Install python in your machine from official website
+Install python in your machine from official website : https://www.python.org/downloads/
 
-```bash
-https://www.python.org/downloads/
-```
+Install ffmpeg binary based on your machine : https://ffmpeg.org/download.html
 
 Install FFmpeg-Compressor with git clone
 
 ```bash
   git clone https://github.com/ArijitAcharjee411/FFmpeg-Compressor.git
-```
-
-
-Install ffmpeg binary based on your machine
-
-```bash
-https://ffmpeg.org/download.html
 ```
 
     
