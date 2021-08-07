@@ -9,10 +9,10 @@ Install python in your machine from official website
 https://www.python.org/downloads/
 ```
 
-Install my-project with git-clone
+Install FFmpeg-Compressor with git clone
 
 ```bash
-  git-clone project-link
+  git clone https://github.com/ArijitAcharjee411/FFmpeg-Compressor.git
 ```
 
 
