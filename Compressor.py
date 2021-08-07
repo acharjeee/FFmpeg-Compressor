@@ -30,7 +30,7 @@ class App:
     def videoCompress(self):
 
         v_codec = "libx265" # change the encoder if you know a better one 
-        v_command = [self.FFmpeg, "-i", self.input, "-map", "0", "-c:v", v_codec, "-an", self.output]
+        v_command = [self.FFmpeg, "-i", self.input, "-map", "0", "-c:v", v_codec, "-preset", "veryfast", "-crf", "26", "-an", self.output]
         if subprocess.run(v_command).returncode == 0:
             print(f"{self.input} has been converted successfully !!")
 
@@ -40,7 +40,7 @@ class App:
     def audiovisualCompress(self):
         a_codec = "libvorbis" # change the encoder if you know a better one
         v_codec = "libx265"   # change the encoder if you know a better one
-        av_command = [self.FFmpeg, "-i", self.input, "-map", "0", "-c:v", v_codec, "-c:a", a_codec, "-b:a", "128k", self.output]
+        av_command = [self.FFmpeg, "-i", self.input, "-map", "0", "-c:v", v_codec, "-preset", "veryfast", "-crf", "26", "-c:a", a_codec, "-b:a", "128k", self.output]
         if subprocess.run(av_command).returncode == 0:
             print(f"{self.input} has been converted successfully !!")
 
