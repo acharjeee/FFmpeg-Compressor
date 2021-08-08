@@ -54,7 +54,7 @@ if (__name__=="__main__"):
     try:
         video_file = (".mp4", ".mkv", ".webm", ".flv", ".vob", "ogv", ".gif", ".gifv", ".avi", ".wmv", ".mov", ".yuv", ".rm", ".m4v", ".mpv", ".3gp", ".wav")
         if file_in.endswith(video_file):
-            asktyp = input("Do you want video stream only in your output(Extracts video only) ?(y/n)")
+            asktyp = input("Do you want video-stream only, in your output(Extracts video only) ?(y/n)")
             if asktyp == "y":
                 root.videoCompress()
             else:
