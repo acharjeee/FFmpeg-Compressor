@@ -1,7 +1,7 @@
 
 # FFmpeg-Compressor-Python
 
-this python script simplifies your interaction with ffmpeg. FFmpeg is a free and open-source software project consisting of a large suite of libraries and programs for handling video, audio, and other multimedia files and streams. It's designed for command-line interface but it's very troublesome to write your options again and again. This python script is the solution of your problem related to it. My script compresses the media(audio/video) based on the streams in the media file. If you want more from this script you can just change the codecs I've mentioned in Compressor.py file.
+these python scripts simplifies your interaction with ffmpeg. FFmpeg is a free and open-source software project consisting of a large suite of libraries and programs for handling video, audio, and other multimedia files and streams. It's designed for command-line interface but it's very troublesome to write your options again and again. These python scripts are the solution of your problem related to it. My scripts compresses the media(audio/video) without any visible quality drop. If you want more from these scripts you can just change the codecs I've mentioned.
 
 !! CHANGE THE FFMPEG FILE PATH BASED ON YOUR MACHINE OR YOU WILL GET AN ERROR !!
 ## Installation
