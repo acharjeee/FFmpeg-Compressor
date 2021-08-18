@@ -6,6 +6,7 @@
 #
 # Distributed under terms of the MIT license.
 
+from types import DynamicClassAttribute
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QProcess
 
@@ -143,31 +144,37 @@ class Ui_MainWindow(object):
             self.p = None
     def message(self, s):
             self.plainTextEdit.appendPlainText(s)
+
+    def handle_stdout(self):
+            data = self.p.readAllStandardOutput()
+            stdout = bytes(data).decode("utf-8")
+            self.message(stdout)        
+    def handle_error(self):
+            data = self.p.readAllStandardError()
+            stderr = bytes(data).decode("utf-8")
+            self.message(stderr)        
     def on_click(self):
             self.plainTextEdit.clear()
-
             if self.p is None:
                     self.message("Processing your request.....\nThis compression could take several minutes(depends upon your device hardware).")
                     self.p = QProcess()
+                    self.p.readyReadStandardError.connect(self.handle_error)
+                    self.p.readyReadStandardOutput.connect(self.handle_stdout)
                     if path.exists(self.lineEdit.text()):
                             path_input = self.lineEdit.text()
                             file_output = self.lineEdit_2.text()
                             a_codec = "libvorbis" # change the codec if you know a better one
-                            v_codec = "libx265" # change the codec if you know a better one
+                            v_codec = "libx264" # change the codec if you know a better one
                             video_file = (".mp4", ".mkv", ".webm", ".flv", ".vob", "ogv", ".gif", ".gifv", ".avi", ".wmv", ".mov", ".yuv", ".rm", ".m4v", ".mpv", ".3gp", ".wav")
                             audio_file = (".3gp", ".aac", ".aax", ".aiff", ".amr", ".ape", ".dvf", ".flac", ".m4a", ".webm", ".mp3", ".ogg", ".msv", ".oga", ".mogg", ".opus", ".raw", ".wav", ".wma", ".tta")
                             if path_input.endswith(video_file):
                                     path_output = f"{file_output}.mkv"
-                                    try:
-                                            av_command = ["-i", path_input, "-map", "0", "-c:v", v_codec, "-preset", "veryfast", "-crf", "26", "-c:a", a_codec, "-b:a", "128k", path_output]
-                                            self.p.start("ffmpeg", av_command)
-                                    except:
-                                            v_command = ["-i", path_input, "-map", "0", "-c:v", v_codec, "-preset", "veryfast", "-crf", "26", "-an", path_output]
-                                            self.p.start("ffmpeg", v_command)
+                                    av_command = ["-i", path_input, "-map", "0", "-c:v", v_codec, "-c:a", a_codec, path_output]
+                                    self.p.start("ffmpeg", av_command)
 
                             if path_input.endswith(audio_file):
                                     path_output = f"{file_output}.ogg"
-                                    a_command = ["-i", path_input, "-c:a", a_codec, "-b:a", "128k", "-vn", path_output]
+                                    a_command = ["-i", path_input, "-c:a", a_codec, "-vn", path_output]
                                     self.p.start("ffmpeg", a_command) 
 
                             self.p.finished.connect(self.process_finished)                              
