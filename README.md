@@ -8,13 +8,6 @@ these python scripts simplifies your interaction with ffmpeg. FFmpeg is a free a
 Install python in your machine from official website : https://www.python.org/downloads/
 
 Install ffmpeg binary based on your machine : https://ffmpeg.org/download.html
-
-Install FFmpeg-Compressor with git clone
-
-```bash
-  git clone https://github.com/ArijitAcharjee411/FFmpeg-Compressor.git
-```
-
     
 ## License
 
